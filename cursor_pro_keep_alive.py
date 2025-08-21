@@ -179,6 +179,7 @@ def get_cursor_session_token(tab, max_attempts=3, retry_interval=2):
             cookies = tab.cookies()
             for cookie in cookies:
                 if cookie.get("name") == "WorkosCursorSessionToken":
+                    logging.info(f"WorkosCursorSessionToken {cookie['value']}")
                     return cookie["value"].split("%3A%3A")[1]
 
             attempts += 1
